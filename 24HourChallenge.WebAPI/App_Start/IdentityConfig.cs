@@ -4,7 +4,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using _24HourChallenge.WebAPI.Models;
-using _24HourChallenge.WebAPI.Data;
+using _24HourChallenge.Data;
 
 namespace _24HourChallenge.WebAPI
 {
