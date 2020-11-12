@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _24HourChallenge.Models;
+using ApplicationDbContext = _24HourChallenge.WebAPI.Data.ApplicationDbContext;
 
 namespace _24HourChallenge.Services
 {
@@ -21,7 +23,7 @@ namespace _24HourChallenge.Services
         public bool CreatePost(PostCreate model)
         {
             var entity =
-                new Post()
+                new PostCreate()
                 {
                     Title = model.Title,
                     Text = model.Text,
@@ -34,6 +36,5 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
     }
 }
