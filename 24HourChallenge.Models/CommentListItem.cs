@@ -10,13 +10,10 @@ namespace _24HourChallenge.Models
 {
     public class CommentListItem
     {
-            [ForeignKey(nameof(Post))]
-            public int PostId { get; set; }
+        public int CommentId { get; set; }
 
-            public Guid Author { get; set; }
+        public string Text { get; set; }
 
-            public string Text { get; set; }
-
-            public virtual List<CreateReply> Replies { get; set; }
+        public virtual List<CreateReply> Replies { get; set; }
     }
 }
