@@ -1,20 +1,26 @@
-﻿using System;
+﻿using _24HourChallenge.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _24HourChallenge.Models
 {
-    public class PostCreate
+    public class PostListItem
     {
-        [Required]
-        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
+        public int PostId { get; set; }
+
+        public Guid Author { get; set; }
+
         public string Title { get; set; }
-        
-        [MaxLength(8000)]
+
         public string Text { get; set; }
+
+        //Foreign Key
+        [ForeignKey(nameof(Comment))]
+        public virtual List<Comment> Comments { get; set; }
     }
 }

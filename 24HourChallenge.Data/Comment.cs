@@ -19,9 +19,9 @@ namespace _24HourChallenge.Data
         [Required]
         public string Text { get; set; }
 
-        //Foreign Key
-        [ForeignKey(nameof(Reply))]
-        public int ReplyId { get; set; }
-        public virtual List<Reply> Replies { get; set; }
+        ////Foreign Key
+        //[ForeignKey(nameof(Reply))]
+        //public int ReplyId { get; set; }
+        //public virtual List<Reply> Replies { get; set; }
     }
 }
