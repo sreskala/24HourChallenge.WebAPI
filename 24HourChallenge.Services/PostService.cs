@@ -76,6 +76,28 @@ namespace _24HourChallenge.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<PostListItem> GetPostsById(int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Posts
+                        .Where(e => e.PostId == id && e.Author == _userId)
+                        .Select(
+                            e =>
+                                new PostListItem
+                                {
+                                    PostId = e.PostId,
+                                    Author = e.Author,
+                                    Title = e.Title,
+                                    Text = e.Text,
+                                    //Comments = e.Comments
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
 
     }
 }
