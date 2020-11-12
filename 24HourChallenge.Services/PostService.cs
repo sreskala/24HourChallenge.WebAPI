@@ -1,10 +1,9 @@
-﻿using _24HourChallenge.Data;
-using System;
+﻿using System;
+using _24HourChallenge.Models;
+using _24HourChallenge.Data;
+using ElevenNote.Data;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _24HourChallenge.Models;
 
 namespace _24HourChallenge.Services
 {
@@ -36,6 +35,24 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool CreateComment(CommentCreate model)
+        {
+            var entity =
+                new Comment()
+                {
+                    Author = _userId,
+                    Text = model.Text,
+                    PostId = model.PostId,
+                };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Comments.Add(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
         public IEnumerable<PostListItem> GetPosts()//get
         {
             using (var ctx = new ApplicationDbContext())
@@ -52,12 +69,13 @@ namespace _24HourChallenge.Services
                                     Author = e.Author,
                                     Title = e.Title,
                                     Text = e.Text,
-                                    Comments = e.Comments
+                                    //Comments = e.Comments
                                 }
                         );
 
                 return query.ToArray();
             }
         }
+
     }
 }
