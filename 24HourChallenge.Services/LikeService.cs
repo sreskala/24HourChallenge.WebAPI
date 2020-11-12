@@ -1,7 +1,6 @@
 ﻿using System;
 using _24HourChallenge.Models;
 using _24HourChallenge.Data;
-using ElevenNote.Data;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _24HourChallenge.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace _24HourChallenge.Models
 {
     public class ReplyListItem
     {
+        [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }
-        [ForeignKey(nameof(CommentId))]
-        public virtual CommentListItem Comment { get; set; }
+
 
         public Guid Author { get; set; }
 
