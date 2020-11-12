@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _24HourChallenge.Models;
+using ApplicationDbContext = _24HourChallenge.WebAPI.Data.ApplicationDbContext;
 
 namespace _24HourChallenge.Services
 {
@@ -21,12 +23,10 @@ namespace _24HourChallenge.Services
         public bool CreatePost(PostCreate model)
         {
             var entity =
-                new Post()
+                new PostCreate()
                 {
-                    Id = _userId,
                     Title = model.Title,
-                    Content = model.Content,
-                    CreatedUtc = DateTimeOffset.Now
+                    Text = model.Text,
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -38,28 +38,6 @@ namespace _24HourChallenge.Services
         }
 
 
-        public IEnumerable<PostListItem> GetNotes()
-        {
-
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .Post
-                        .Where(e => e.UserId == _userId)
-                        .Select(
-                            e =>
-                                new PostListItem
-                                {
-                                    NoteId = e.NoteId,
-                                    Title = e.Title,
-                                    CreatedUtc = e.CreatedUtc
-                                }
-                        );
-
-                return query.ToArray();
-            }
-        }
 
     }
 }
