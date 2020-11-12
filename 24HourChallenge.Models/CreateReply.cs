@@ -1,5 +1,4 @@
-﻿using _24HourChallenge.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,19 +8,14 @@ using System.Threading.Tasks;
 
 namespace _24HourChallenge.Models
 {
-    public class CommentCreate
+    public class CreateReply
     {
         [Required]
         public string Text { get; set; }
-        
-   
-        [ForeignKey(nameof(Post))]
-        public int PostId  {get; set; }
 
 
-
-
-
+        [ForeignKey(nameof(CommentId))]
+        public int CommentId { get; set; }
 
 
 
