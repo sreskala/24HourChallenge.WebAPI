@@ -19,8 +19,6 @@ namespace _24HourChallenge.Models
 
         public string Text { get; set; }
 
-        //Foreign Key
-        [ForeignKey(nameof(Comment))]
         public virtual List<Comment> Comments { get; set; }
     }
 }
