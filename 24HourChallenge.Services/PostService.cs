@@ -23,10 +23,8 @@ namespace _24HourChallenge.Services
             var entity =
                 new Post()
                 {
-                    Id = _userId,
                     Title = model.Title,
-                    Content = model.Content,
-                    CreatedUtc = DateTimeOffset.Now
+                    Text = model.Text,
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -34,30 +32,6 @@ namespace _24HourChallenge.Services
                 ctx.Post.Add(entity);
 
                 return ctx.SaveChanges() == 1;
-            }
-        }
-
-
-        public IEnumerable<PostListItem> GetNotes()
-        {
-
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .Post
-                        .Where(e => e.UserId == _userId)
-                        .Select(
-                            e =>
-                                new PostListItem
-                                {
-                                    NoteId = e.NoteId,
-                                    Title = e.Title,
-                                    CreatedUtc = e.CreatedUtc
-                                }
-                        );
-
-                return query.ToArray();
             }
         }
 
