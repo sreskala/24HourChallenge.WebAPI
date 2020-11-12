@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-﻿using System;
-using _24HourChallenge.Models;
-using _24HourChallenge.Data;
-using ElevenNote.Data;
-using System.Collections.Generic;
-=======
 ﻿using _24HourChallenge.Data;
 using System;
 using System.Collections.Generic;
@@ -12,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _24HourChallenge.Models;
->>>>>>> c6487b1b1b29d224a71aa2d9d1311ddd2d82e41d
 
 namespace _24HourChallenge.Services
 {
