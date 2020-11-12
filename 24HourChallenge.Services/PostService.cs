@@ -34,23 +34,6 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool CreateComment(CommentCreate model)
-        {
-            var entity =
-                new Comment()
-                {
-                    Author = _userId,
-                    Text = model.Text,
-                    PostId = model.PostId,
-                };
-
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.Comments.Add(entity);
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
 
         public IEnumerable<PostListItem> GetPosts()//get
         {
