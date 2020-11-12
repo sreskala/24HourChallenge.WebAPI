@@ -33,5 +33,25 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<CommentListItem> GetCommentsByPostId(int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Comments
+                        .Where(e => e.PostId == id && e.Author == _userId)
+                        .Select(
+                            e =>
+                                new CommentListItem
+                                {
+                                    CommentId = e.CommentId,
+                                    Text = e.Text,
+                                    //Comments = e.Comments
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
     }
 }

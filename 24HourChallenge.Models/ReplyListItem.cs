@@ -13,7 +13,6 @@ namespace _24HourChallenge.Models
         [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }
 
-
         public Guid Author { get; set; }
 
         public string Text { get; set; }
