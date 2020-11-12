@@ -8,18 +8,20 @@ using System.Threading.Tasks;
 
 namespace _24HourChallenge.Data
 {
-    public class Post
+    public class Like
     {
         [Key]
-        public int PostId { get; set; }
+        public int LikeId { get; set; }
 
         [Required]
         public Guid Author { get; set; }
 
+        [ForeignKey(nameof(Post))]
         [Required]
-        public string Title { get; set; }
+        public int PostId { get; set; }
 
-        [Required]
-        public string Text { get; set; }
+
+        ////Foreign Key
+        //public virtual List<Reply> Replies { get; set; }
     }
 }

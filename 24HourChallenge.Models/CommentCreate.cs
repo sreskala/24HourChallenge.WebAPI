@@ -9,16 +9,23 @@ using System.Threading.Tasks;
 
 namespace _24HourChallenge.Models
 {
-    public class PostListItem
+    public class CommentCreate
     {
-        public int PostId { get; set; }
-
-        public Guid Author { get; set; }
-
-        public string Title { get; set; }
-
+        [Required]
         public string Text { get; set; }
+        
+   
+        [ForeignKey(nameof(Post))]
+        public int PostId  {get; set; }
 
-        public virtual List<Comment> Comments { get; set; }
-    }
+
+
+
+
+
+
+
+
+
+}
 }

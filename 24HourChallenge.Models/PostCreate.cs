@@ -10,11 +10,12 @@ namespace _24HourChallenge.Models
     public class PostCreate
     {
         [Required]
-        [MinLength(2, ErrorMessage = "Please enter at least 2 characters.")]
-        [MaxLength(100, ErrorMessage = "There are too many characters in this field.")]
+        [MaxLength(40, ErrorMessage = "Title post cannot be greater than 40 characters.")]
         public string Title { get; set; }
-        
+
+        [Required]
         [MaxLength(8000)]
+        [MinLength(5, ErrorMessage = "Post body must be at least 5 characters")]
         public string Text { get; set; }
     }
 }
