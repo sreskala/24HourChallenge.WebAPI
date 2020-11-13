@@ -63,7 +63,7 @@ namespace _24HourChallenge.WebAPI.Controllers
         //UPDATE
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateReply([FromUri] int id, [FromBody] ReplyEdit model)
+        public IHttpActionResult UpdateReply([FromUri] int id, [FromBody] ReplyEdit model)
         {
             var service = CreateReplyService();
 
