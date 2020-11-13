@@ -48,5 +48,30 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public bool DeleteLikeByPostId([FromUri] int id)
+        {
+            using(var context = new ApplicationDbContext())
+            {
+                var entityList =
+                    context
+                    .Likes
+                    .Where(e => e.PostId == id && e.Author == _userId)
+                    .ToList();
+
+                if(entityList.Count == 0)
+                {
+                    return false;
+                }
+
+                int listLength = entityList.Count();
+                Random random = new Random();
+                int randLike = random.Next(0, listLength);
+                Like likeToBeDeleted = entityList[randLike];
+
+                context.Likes.Remove(likeToBeDeleted);
+                return context.SaveChanges() == 1;
+            }
+        }
     }
 }
