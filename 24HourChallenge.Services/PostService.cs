@@ -3,6 +3,7 @@ using _24HourChallenge.Models;
 using _24HourChallenge.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 
 namespace _24HourChallenge.Services
 {
@@ -80,6 +81,36 @@ namespace _24HourChallenge.Services
                 return query.ToArray();
             }
         }
+
+
+
+        public IEnumerable<PostListItem> UpdatePostsById([FromUri] int id, [FromBody] PostEdit model)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostId == id && e.Author == _userId);
+                            entity.Title = model.Title;
+                            entity.Text = model.Text;
+                return ctx.SaveChanges() == 1; 
+            
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
