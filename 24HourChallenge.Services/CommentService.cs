@@ -114,14 +114,14 @@ namespace _24HourChallenge.Services
         //DELETE COMMENT BY ID
 
 
-        public bool DeletePostsById([FromUri] int id)//get
+        public bool DeleteCommentsById([FromUri] int id)//get
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Comments
-                        .Single(e => e.PostId == id && e.Author == _userId);
+                        .Single(e => e.CommentId == id && e.Author == _userId);
                 ctx.Comments.Remove(entity);
                 return ctx.SaveChanges() == 1;
 
