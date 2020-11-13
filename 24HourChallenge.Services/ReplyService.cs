@@ -34,6 +34,31 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        public IEnumerable<ReplyListItem> GetReplyByCommentId(int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Replies
+                        .Where(e => e.CommentId == id && e.Author == _userId)
+                        .Select(
+                            e =>
+                                new ReplyListItem
+                                {
+                                    Author = e.Author,
+                                    Text = e.Text,
+                                    //Comments = e.Comments
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
+
+
+
+
         public bool UpdateReply([FromUri] int id, [FromBody] ReplyEdit model)//put
         {
             using (var ctx = new ApplicationDbContext())

@@ -59,7 +59,7 @@ namespace _24HourChallenge.WebAPI.Controllers
         //}
 
         ////GET BY ID
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetByPostId(int id)
         {
             CommentService service = CreateCommentService();
 
