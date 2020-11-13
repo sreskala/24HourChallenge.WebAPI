@@ -71,29 +71,13 @@ namespace _24HourChallenge.WebAPI.Controllers
         //UPDATE
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateComment([FromUri] int id, [FromBody] CommentListItem model)
+        public async Task<IHttpActionResult> UpdateComment([FromUri] int id, [FromBody] CommentEdit model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var service = CreateCommentService();
 
-            Comment comment = await _context.Comments.FindAsync(id);
+            if (!service.UpdateCommentById(id, model)) { return InternalServerError(); }
 
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            comment.Text = model.Text;
-
-
-            if (await _context.SaveChangesAsync() == 1)
-            {
-                return Ok();
-            }
-
-            return InternalServerError();
+            return Ok();
 
         }
 

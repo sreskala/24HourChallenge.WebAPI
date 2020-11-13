@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace _24HourChallenge.WebAPI.Controllers
@@ -63,6 +64,32 @@ namespace _24HourChallenge.WebAPI.Controllers
             IEnumerable<PostListItem> posts = service.GetPostsById(id);
 
             return Ok(posts);
+        }
+        //UPDATE
+
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdatePost([FromUri] int id, [FromBody] PostEdit model)
+        {
+            var service = CreatePostService();
+
+            if (!service.UpdatePostsById(id, model)) { return InternalServerError(); }
+
+            return Ok();
+
+        }
+
+        //DELETE
+
+        [HttpDelete]
+        public IHttpActionResult DeletePost(int id)
+        {
+
+            var service = CreatePostService();
+
+            if (!service.DeletePostsById(id)) { return InternalServerError(); }
+
+            return Ok();
+
         }
     }
 }
