@@ -84,7 +84,7 @@ namespace _24HourChallenge.Services
 
 
 
-        public IEnumerable<PostListItem> UpdatePostsById([FromUri] int id, [FromBody] PostEdit model)//get
+        public bool UpdatePostsById([FromUri] int id, [FromBody] PostEdit model)//get
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -98,17 +98,6 @@ namespace _24HourChallenge.Services
             
             }
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
