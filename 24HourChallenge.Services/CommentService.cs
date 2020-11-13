@@ -49,7 +49,7 @@ namespace _24HourChallenge.Services
                                 {
                                     CommentId = e.CommentId,
                                     Text = e.Text,
-                                    Replies = ctx.Replies.Where(r => r.CommentId == r.CommentId).Select(r =>
+                                    Replies = ctx.Replies.Where(r => r.CommentId == e.CommentId).Select(r =>
                                new ReplyListItem
                                {
                                    ReplyId = r.ReplyId,
