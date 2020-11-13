@@ -71,7 +71,7 @@ namespace _24HourChallenge.WebAPI.Controllers
         //UPDATE
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateComment([FromUri] int id, [FromBody] CommentEdit model)
+        public IHttpActionResult UpdateComment([FromUri] int id, [FromBody] CommentEdit model)
         {
             var service = CreateCommentService();
 

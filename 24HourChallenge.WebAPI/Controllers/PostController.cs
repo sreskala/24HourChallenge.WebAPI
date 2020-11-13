@@ -68,7 +68,7 @@ namespace _24HourChallenge.WebAPI.Controllers
         //UPDATE
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdatePost([FromUri] int id, [FromBody] PostEdit model)
+        public IHttpActionResult UpdatePost([FromUri] int id, [FromBody] PostEdit model)
         {
             var service = CreatePostService();
 
