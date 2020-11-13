@@ -42,16 +42,20 @@ namespace _24HourChallenge.Services
                 var query =
                     ctx
                         .Comments
-                        .Where(e => e.PostId == id && e.Author == _userId)
+                        .Where(e => e.PostId == id)
                         .Select(
                             e =>
                                 new CommentListItem
                                 {
                                     CommentId = e.CommentId,
                                     Text = e.Text,
-                                    //Comments = e.Comments
-                                }
-                        );
+                                    Replies = ctx.Replies.Where(r => r.CommentId == r.CommentId).Select(r =>
+                               new ReplyListItem
+                               {
+                                   ReplyId = r.ReplyId,
+                                   Text = r.Text
+                               }).ToList()
+                                }).ToList();
                 return query.ToArray();
             }
         }
