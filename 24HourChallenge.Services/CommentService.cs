@@ -3,6 +3,7 @@ using _24HourChallenge.Models;
 using _24HourChallenge.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 
 namespace _24HourChallenge.Services
 {
@@ -73,6 +74,20 @@ namespace _24HourChallenge.Services
                                 }
                         );
                 return query.ToArray();
+            }
+        }
+        public bool UpdateComment([FromUri]int id, [FromBody] CommentEdit model)//put
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == id && e.Author == _userId);
+
+                entity.Text = model.Text;
+
+                return ctx.SaveChanges() == 1;
             }
         }
 
