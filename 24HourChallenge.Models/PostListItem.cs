@@ -34,6 +34,6 @@ namespace _24HourChallenge.Models
         //    }
         //}
 
-        public virtual List<Comment> Comments { get; set; }
+        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
