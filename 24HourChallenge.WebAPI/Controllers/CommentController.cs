@@ -1,4 +1,5 @@
-﻿using _24HourChallenge.Models;
+﻿using _24HourChallenge.Data;
+using _24HourChallenge.Models;
 using _24HourChallenge.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -6,12 +7,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace _24HourChallenge.WebAPI.Controllers
 {
     public class CommentController : ApiController
     {
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
+
+
+
         //private method to create a comment service
         private CommentService CreateCommentService()
         {
@@ -63,6 +69,55 @@ namespace _24HourChallenge.WebAPI.Controllers
             IEnumerable<CommentListItem> comments = service.GetCommentsByPostId(id);
 
             return Ok(comments);
+        }
+
+        //UPDATE
+
+
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdateComment([FromUri] int id, [FromBody] PostListItem model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Comment comment = await _context.Comments.FindAsync(id);
+
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            comment.Text = model.Text;
+
+
+            if (await _context.SaveChangesAsync() == 1)
+            {
+                return Ok();
+            }
+
+            return InternalServerError();
+
+        }
+
+
+
+
+
+        //DELETE
+
+
+        [HttpDelete]
+        public IHttpActionResult DeleteComment(int id)
+        {
+
+            var service = CreateCommentService();
+
+            if (!service.DeleteCommentsById(id)) { return InternalServerError(); }
+
+            return Ok();
+
         }
 
 
