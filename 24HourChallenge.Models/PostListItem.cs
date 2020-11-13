@@ -19,21 +19,7 @@ namespace _24HourChallenge.Models
 
         public string Text { get; set; }
         public int LikeCount { get; set; }
-        //{
-        //    get
-        //    {
-        //        using (var ctx = new ApplicationDbContext())
-        //        {
-        //            var query =
-        //                ctx
-        //                    .Likes
-        //                    .Where(e => e.PostId == PostId);
 
-        //            return query.Count();
-        //        }
-        //    }
-        //}
-
-        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
+        public virtual List<Comment> Comments { get; set; }
     }
 }
