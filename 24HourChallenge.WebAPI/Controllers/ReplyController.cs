@@ -47,6 +47,26 @@ namespace _24HourChallenge.WebAPI.Controllers
             return Ok();
         }
 
+
+        ////GET BY ID
+        public IHttpActionResult GetByCommentId(int id)
+        {
+            ReplyService service = CreateReplyService();
+
+            IEnumerable<ReplyListItem> comments = service.GetReplyByCommentId(id);
+
+            return Ok(comments);
+        }
+
+
+
+
+
+
+
+
+
+
         //=========Read===========//
 
         //UPDATE
