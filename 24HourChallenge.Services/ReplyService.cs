@@ -3,6 +3,7 @@ using _24HourChallenge.Models;
 using _24HourChallenge.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 
 namespace _24HourChallenge.Services
 {
@@ -29,6 +30,20 @@ namespace _24HourChallenge.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Replies.Add(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool UpdateReply([FromUri] int id, [FromBody] ReplyEdit model)//put
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Replies
+                        .Single(e => e.ReplyId == id && e.Author == _userId);
+
+                entity.Text = model.Text;
 
                 return ctx.SaveChanges() == 1;
             }
