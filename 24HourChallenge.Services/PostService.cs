@@ -100,6 +100,22 @@ namespace _24HourChallenge.Services
         }
 
 
+        public bool DeletePostsById([FromUri] int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Posts
+                        .Single(e => e.PostId == id && e.Author == _userId);
+                ctx.Posts.Remove(entity);
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+
+
 
     }
 }
