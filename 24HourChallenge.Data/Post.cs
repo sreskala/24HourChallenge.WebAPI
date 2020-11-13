@@ -21,5 +21,8 @@ namespace _24HourChallenge.Data
 
         [Required]
         public string Text { get; set; }
+
+        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
+
     }
 }

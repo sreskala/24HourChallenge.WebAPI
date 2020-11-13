@@ -54,6 +54,7 @@ namespace _24HourChallenge.Services
                                     Text = e.Text,
                                     LikeCount = ctx.Likes.Where(f => f.PostId == e.PostId).Count(),
                                     //Comments = /*= ctx.Comments.Where(c => c.PostId == e.PostId).ToList()*/
+
                                     Comments = ctx.Comments.Where(c => c.PostId == e.PostId).Select(c =>
                                         new CommentListItem
                                         {
