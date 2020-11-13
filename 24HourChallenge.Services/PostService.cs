@@ -61,6 +61,7 @@ namespace _24HourChallenge.Services
                                                 new ReplyListItem
                                                 {
                                                     ReplyId = r.ReplyId,
+                                                    Author = r.Author,
                                                     Text = r.Text
                                                 }).ToList()
                                         }).ToList()
@@ -96,6 +97,7 @@ namespace _24HourChallenge.Services
                                                 new ReplyListItem
                                                 {
                                                     ReplyId = r.ReplyId,
+                                                    Author = r.Author,
                                                     Text = r.Text
                                                 }).ToList()
                                         }).ToList()
