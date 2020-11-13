@@ -16,5 +16,9 @@ namespace _24HourChallenge.Models
         
         [MaxLength(8000)]
         public string Text { get; set; }
+
+        public int LikeCount { get; set; }
+
+        public virtual List<Comment> Comments { get; set; }
     }
 }
