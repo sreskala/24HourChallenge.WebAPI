@@ -60,22 +60,6 @@ namespace _24HourChallenge.Services
             }
         }
 
-
-        public bool UpdateComment([FromUri]int id, [FromBody] CommentEdit model)//put
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .Comments
-                        .Single(e => e.CommentId == id && e.Author == _userId);
-
-                entity.Text = model.Text;
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-
         //UPDATE COMMENT BY ID
 
         public bool UpdateCommentById([FromUri] int id, [FromBody] CommentEdit model)//get
