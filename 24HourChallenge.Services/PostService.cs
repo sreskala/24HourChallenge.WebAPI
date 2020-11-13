@@ -56,7 +56,7 @@ namespace _24HourChallenge.Services
                                         new CommentListItem
                                         {
                                             CommentId = c.CommentId,
-                                            Text = e.Text,
+                                            Text = c.Text,
                                             Replies = ctx.Replies.Where(r => r.CommentId == c.CommentId).Select(r =>
                                                 new ReplyListItem
                                                 {
@@ -91,7 +91,7 @@ namespace _24HourChallenge.Services
                                         new CommentListItem
                                         {
                                             CommentId = c.CommentId,
-                                            Text = e.Text,
+                                            Text = c.Text,
                                             Replies = ctx.Replies.Where(r => r.CommentId == c.CommentId).Select(r =>
                                                 new ReplyListItem
                                                 {
