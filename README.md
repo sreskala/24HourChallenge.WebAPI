@@ -135,7 +135,7 @@ Authorization    |   Bearer {YourToken}
 2. Make a Delete and driect it to https://localhost:{YourLocalHost}/api/Reply/{id}
 3. Send
 
-Delete a Like By Post Id
+### Delete a Like By Post Id
 1. Decide what post you'd like remove a like from, the PostId = id below
 2. Make a Delete and driect it to https://localhost:{YourLocalHost}/api/Like/{id}
 3. Send
