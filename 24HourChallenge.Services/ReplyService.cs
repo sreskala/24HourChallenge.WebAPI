@@ -48,5 +48,20 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+
+        public bool DeleteRepliesById([FromUri] int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Replies
+                        .Single(e => e.ReplyId == id && e.Author == _userId);
+                ctx.Replies.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

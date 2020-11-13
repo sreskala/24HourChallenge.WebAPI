@@ -91,5 +91,44 @@ namespace _24HourChallenge.Services
             }
         }
 
+
+
+        //UPDATE COMMENT BY ID
+
+
+        public bool UpdateCommentById([FromUri] int id, [FromBody] CommentEdit model)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == id && e.Author == _userId);
+                entity.Text = model.Text;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+
+        //DELETE COMMENT BY ID
+
+
+        public bool DeletePostsById([FromUri] int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Comments
+                        .Single(e => e.PostId == id && e.Author == _userId);
+                ctx.Comments.Remove(entity);
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+
+
     }
 }
