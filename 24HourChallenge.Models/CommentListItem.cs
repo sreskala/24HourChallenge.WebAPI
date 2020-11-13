@@ -14,6 +14,6 @@ namespace _24HourChallenge.Models
 
         public string Text { get; set; }
 
-        public virtual List<Reply> Replies { get; set; } = new List<Reply>();
+        public List<ReplyListItem> Replies { get; set; }
     }
 }
