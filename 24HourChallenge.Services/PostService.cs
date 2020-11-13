@@ -53,9 +53,10 @@ namespace _24HourChallenge.Services
                                     Title = e.Title,
                                     Text = e.Text,
                                     LikeCount = ctx.Likes.Where(f => f.PostId == e.PostId).Count(),
-                                    //Comments = e.Comments
+                                    //Comments = /*= ctx.Comments.Where(c => c.PostId == e.PostId).ToList()*/
+                                    //Comments = e.
                                 }
-                        );
+                        ) ;
 
                 return query.ToArray();
             }
