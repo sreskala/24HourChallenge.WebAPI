@@ -48,22 +48,22 @@ namespace _24HourChallenge.WebAPI.Controllers
         //GET ALL
         //public IHttpActionResult Get()
         //{
-        //    //CommentService service = CreateCommentService();
+        //    CommentService service = CreateCommentService();
 
-        //    //IEnumerable<CommentListItem> comments = service.GetComments();
+        //    IEnumerable<CommentListItem> comments = service.GetComments();
 
-        //    //return Ok(comments);
+        //    return Ok(comments);
         //}
 
         ////GET BY ID
-        //public IHttpActionResult Get(int id)
-        //{
-        //    //CommentService service = CreateCommentService();
+        public IHttpActionResult Get(int id)
+        {
+            CommentService service = CreateCommentService();
 
-        //    //CommentDetail comment = service.GetCommentById(id);
+            IEnumerable<CommentListItem> comments = service.GetCommentsByPostId(id);
 
-        //    //return Ok(comment);
-        //}
+            return Ok(comments);
+        }
 
 
     }
