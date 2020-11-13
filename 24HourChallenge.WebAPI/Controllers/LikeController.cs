@@ -38,5 +38,19 @@ namespace _24HourChallenge.WebAPI.Controllers
 
             return Ok();
         }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteLikeById(int id)
+        {
+
+            var service = CreateLikeService();
+
+            if (!service.DeleteLikeById(id)) { return InternalServerError(); }
+
+            return Ok();
+
+        }
+
+
     }
 }
