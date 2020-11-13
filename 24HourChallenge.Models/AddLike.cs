@@ -13,8 +13,6 @@ namespace _24HourChallenge.Models
 
         [Required]
         public int PostId { get; set; }
-
-
     }
 
 }

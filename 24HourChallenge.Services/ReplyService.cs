@@ -49,7 +49,6 @@ namespace _24HourChallenge.Services
             }
         }
 
-
         public bool DeleteRepliesById([FromUri] int id)//get
         {
             using (var ctx = new ApplicationDbContext())
@@ -62,6 +61,5 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
     }
 }

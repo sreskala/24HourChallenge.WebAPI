@@ -34,6 +34,7 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
         public IEnumerable<CommentListItem> GetCommentsByPostId(int id)//get
         {
             using (var ctx = new ApplicationDbContext())
@@ -54,7 +55,6 @@ namespace _24HourChallenge.Services
                 return query.ToArray();
             }
         }
-
 
         public IEnumerable<ReplyListItem> GetReplyByCommentId(int id)//get
         {
@@ -91,10 +91,7 @@ namespace _24HourChallenge.Services
             }
         }
 
-
-
         //UPDATE COMMENT BY ID
-
 
         public bool UpdateCommentById([FromUri] int id, [FromBody] CommentEdit model)//get
         {
@@ -110,9 +107,7 @@ namespace _24HourChallenge.Services
             }
         }
 
-
         //DELETE COMMENT BY ID
-
 
         public bool DeleteCommentsById([FromUri] int id)//get
         {
@@ -127,8 +122,5 @@ namespace _24HourChallenge.Services
 
             }
         }
-
-
-
     }
 }

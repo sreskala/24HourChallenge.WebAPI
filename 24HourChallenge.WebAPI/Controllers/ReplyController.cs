@@ -12,16 +12,16 @@ using System.Web.Http;
 
 namespace _24HourChallenge.WebAPI.Controllers
 {
-    public class CommentController : ApiController
+    public class ReplyController : ApiController
     {
         private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
         //private method to create a comment service
-        private CommentService CreateCommentService()
+        private ReplyService CreateReplyService()
         {
             Guid userId = Guid.Parse(User.Identity.GetUserId());
-            CommentService commentService = new CommentService(userId);
-            return commentService;
+            ReplyService replyService = new ReplyService(userId);
+            return replyService;
         }
 
         //CRUD METHODS
@@ -29,7 +29,7 @@ namespace _24HourChallenge.WebAPI.Controllers
         //========CREATE========//
 
         //POST
-        public IHttpActionResult Post(CommentCreate comment)
+        public IHttpActionResult Post(CreateReply comment)
         {
             if (!ModelState.IsValid)
             {
@@ -37,9 +37,9 @@ namespace _24HourChallenge.WebAPI.Controllers
             }
 
             //instantitate service
-            CommentService service = CreateCommentService();
+            ReplyService service = CreateReplyService();
 
-            if (!service.CreateComment(comment))
+            if (!service.CreateReply(comment))
             {
                 return InternalServerError();
             }
@@ -48,44 +48,25 @@ namespace _24HourChallenge.WebAPI.Controllers
         }
 
         //=========Read===========//
-        //GET ALL
-        //public IHttpActionResult Get()
-        //{
-        //    CommentService service = CreateCommentService();
-
-        //    IEnumerable<CommentListItem> comments = service.GetComments();
-
-        //    return Ok(comments);
-        //}
-
-        ////GET BY ID
-        public IHttpActionResult Get(int id)
-        {
-            CommentService service = CreateCommentService();
-
-            IEnumerable<CommentListItem> comments = service.GetCommentsByPostId(id);
-
-            return Ok(comments);
-        }
 
         //UPDATE
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateComment([FromUri] int id, [FromBody] CommentListItem model)
+        public async Task<IHttpActionResult> UpdateReply([FromUri] int id, [FromBody] ReplyListItem model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            Comment comment = await _context.Comments.FindAsync(id);
+            Reply reply = await _context.Replies.FindAsync(id);
 
-            if (comment == null)
+            if (reply == null)
             {
                 return NotFound();
             }
 
-            comment.Text = model.Text;
+            reply.Text = model.Text;
 
 
             if (await _context.SaveChangesAsync() == 1)
@@ -100,12 +81,12 @@ namespace _24HourChallenge.WebAPI.Controllers
         //DELETE
 
         [HttpDelete]
-        public IHttpActionResult DeleteComment(int id)
+        public IHttpActionResult DeleteReply(int id)
         {
 
-            var service = CreateCommentService();
+            var service = CreateReplyService();
 
-            if (!service.DeleteCommentsById(id)) { return InternalServerError(); }
+            if (!service.DeleteRepliesById(id)) { return InternalServerError(); }
 
             return Ok();
 

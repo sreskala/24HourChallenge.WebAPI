@@ -48,10 +48,5 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-
-
-
-
     }
 }

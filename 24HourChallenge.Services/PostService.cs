@@ -17,7 +17,6 @@ namespace _24HourChallenge.Services
             _userId = userId;
         }
 
-
         public bool CreatePost(PostCreate model)
         {
             var entity =
@@ -53,13 +52,17 @@ namespace _24HourChallenge.Services
                                     Title = e.Title,
                                     Text = e.Text,
                                     LikeCount = ctx.Likes.Where(f => f.PostId == e.PostId).Count(),
-                                    //Comments = /*= ctx.Comments.Where(c => c.PostId == e.PostId).ToList()*/
-
                                     Comments = ctx.Comments.Where(c => c.PostId == e.PostId).Select(c =>
                                         new CommentListItem
                                         {
                                             CommentId = c.CommentId,
-                                            Text = e.Text
+                                            Text = e.Text,
+                                            Replies = ctx.Replies.Where(r => r.CommentId == c.CommentId).Select(r =>
+                                                new ReplyListItem
+                                                {
+                                                    ReplyId = r.ReplyId,
+                                                    Text = r.Text
+                                                }).ToList()
                                         }).ToList()
                                 }
                         );
@@ -84,14 +87,23 @@ namespace _24HourChallenge.Services
                                     Title = e.Title,
                                     Text = e.Text,
                                     LikeCount = ctx.Likes.Where(f => f.PostId == e.PostId).Count(),
-                                    //Comments = e.Comments
+                                    Comments = ctx.Comments.Where(c => c.PostId == e.PostId).Select(c =>
+                                        new CommentListItem
+                                        {
+                                            CommentId = c.CommentId,
+                                            Text = e.Text,
+                                            Replies = ctx.Replies.Where(r => r.CommentId == c.CommentId).Select(r =>
+                                                new ReplyListItem
+                                                {
+                                                    ReplyId = r.ReplyId,
+                                                    Text = r.Text
+                                                }).ToList()
+                                        }).ToList()
                                 }
                         );
                 return query.ToArray();
             }
         }
-
-
 
         public bool UpdatePostsById([FromUri] int id, [FromBody] PostEdit model)//get
         {
@@ -108,7 +120,6 @@ namespace _24HourChallenge.Services
             }
         }
 
-
         public bool DeletePostsById([FromUri] int id)//get
         {
             using (var ctx = new ApplicationDbContext())
@@ -122,9 +133,5 @@ namespace _24HourChallenge.Services
 
             }
         }
-
-
-
-
     }
 }

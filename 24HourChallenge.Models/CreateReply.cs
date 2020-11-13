@@ -16,7 +16,6 @@ namespace _24HourChallenge.Models
         [MinLength(5, ErrorMessage = "Post body must be at least 5 characters")]
         public string Text { get; set; }
 
-
         [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }
     }

@@ -56,12 +56,13 @@ namespace _24HourChallenge.WebAPI.Controllers
         }
 
         //GET POST BY ID
-        //public IHttpActionResult Get(int id)
-        //{
-        //    PostService service = CreatePostService();
+        public IHttpActionResult GetById(int id)
+        {
+            PostService service = CreatePostService();
 
+            IEnumerable<PostListItem> posts = service.GetPostsById(id);
 
-        //    //return Ok(post)
-        //}
+            return Ok(posts);
+        }
     }
 }

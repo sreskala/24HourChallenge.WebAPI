@@ -21,7 +21,7 @@ namespace _24HourChallenge.Models
 
         public int LikeCount { get; set; }
 
-        public virtual List<CommentListItem> Comments { get; set; }
+        public List<CommentListItem> Comments { get; set; }
 
     }
 }
