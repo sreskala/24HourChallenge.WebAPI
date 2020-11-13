@@ -3,6 +3,7 @@ using _24HourChallenge.Models;
 using _24HourChallenge.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 
 namespace _24HourChallenge.Services
 {
@@ -32,5 +33,24 @@ namespace _24HourChallenge.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        //LIKE DELETE
+
+        public bool DeleteLikeById([FromUri] int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Likes
+                        .Single(e => e.LikeId == id && e.Author == _userId);
+                ctx.Likes.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
+
+
     }
 }
