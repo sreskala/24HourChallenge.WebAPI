@@ -22,8 +22,9 @@ Make your Token
 
 +++++++++++++++++++++
 
-Before each endpoint listed below you must first to the following every time!
-1.After creating each, navagate to Headers and add to the end of the list:
+Before each endpoint listed below you must first to the following every time:
+
+1.After creating each, navagate to Headers and add the below (Key | Value) to the end of the list:
 Authorization    |   Bearer [YourToken}
 
 [[[POST]]]
