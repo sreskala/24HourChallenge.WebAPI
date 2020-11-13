@@ -18,8 +18,10 @@ namespace _24HourChallenge.Models
         public string Title { get; set; }
 
         public string Text { get; set; }
+
         public int LikeCount { get; set; }
 
-        public virtual List<Comment> Comments { get; set; }
+        public virtual List<CommentListItem> Comments { get; set; }
+
     }
 }
