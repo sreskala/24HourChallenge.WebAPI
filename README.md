@@ -16,15 +16,20 @@
 
 ## Get your Token
 1. Make a post and direct it to https://localhost:{YourLocalHost}/token
-2. Navagate to Body > x.www-form-urlencoded
+2. Navigate to Body > x.www-form-urlencoded
 3. Enter values:
-|Key | Value |
-|--------|-------:|
- | grant_type | password |
- | username   | {YourEmail}|
- | password   | {YourPassword}|
+
+Input into body header
+| Key | Value|
+| :---------------: | ----------- |
+| grant_type | password |
+| username | {YourEmail} |
+| password | {YourPassword} |
+
+
 4. Send
 5. Copy the access_token, do not include the quotes
+
 
 -----------------
 
