@@ -40,12 +40,12 @@ namespace _24HourChallenge.WebAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteLikeById(int id)
+        public IHttpActionResult DeleteLikeByPostId(int id)
         {
 
             var service = CreateLikeService();
 
-            if (!service.DeleteLikeById(id)) { return InternalServerError(); }
+            if (!service.DeleteLikeByPostId(id)) { return InternalServerError(); }
 
             return Ok();
 
