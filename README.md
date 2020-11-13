@@ -6,7 +6,7 @@ First make a user via Postman:
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
   Email             
-  Password
+  Password 
   Confirm Password
 4. Send
 
