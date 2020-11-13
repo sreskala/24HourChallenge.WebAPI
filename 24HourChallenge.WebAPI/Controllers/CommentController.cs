@@ -48,15 +48,6 @@ namespace _24HourChallenge.WebAPI.Controllers
         }
 
         //=========Read===========//
-        //GET ALL
-        //public IHttpActionResult Get()
-        //{
-        //    CommentService service = CreateCommentService();
-
-        //    IEnumerable<CommentListItem> comments = service.GetComments();
-
-        //    return Ok(comments);
-        //}
 
         ////GET BY ID
         public IHttpActionResult GetByPostId(int id)
