@@ -10,7 +10,6 @@ namespace _24HourChallenge.Models
 {
     public class ReplyListItem
     {
-        [ForeignKey(nameof(Comment))]
         public int ReplyId { get; set; }
 
         public Guid Author { get; set; }

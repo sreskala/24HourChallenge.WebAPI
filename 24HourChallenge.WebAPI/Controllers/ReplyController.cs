@@ -63,29 +63,13 @@ namespace _24HourChallenge.WebAPI.Controllers
         //UPDATE
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateReply([FromUri] int id, [FromBody] ReplyListItem model)
+        public async Task<IHttpActionResult> UpdateReply([FromUri] int id, [FromBody] ReplyEdit model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var service = CreateReplyService();
 
-            Reply reply = await _context.Replies.FindAsync(id);
+            if (!service.UpdateReply(id, model)) { return InternalServerError(); }
 
-            if (reply == null)
-            {
-                return NotFound();
-            }
-
-            reply.Text = model.Text;
-
-
-            if (await _context.SaveChangesAsync() == 1)
-            {
-                return Ok();
-            }
-
-            return InternalServerError();
+            return Ok();
 
         }
 
