@@ -76,6 +76,7 @@ namespace _24HourChallenge.Services
                                     Author = e.Author,
                                     Title = e.Title,
                                     Text = e.Text,
+                                    LikeCount = ctx.Likes.Where(f => f.PostId == e.PostId).Count(),
                                     //Comments = e.Comments
                                 }
                         );
