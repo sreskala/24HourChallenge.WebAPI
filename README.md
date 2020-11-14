@@ -52,6 +52,7 @@ Before each endpoint listed below you must first to the following every time:
 
 | Title |            
 | Text |
+
 4. Send
 
 ### Post a Comment
@@ -61,6 +62,7 @@ Before each endpoint listed below you must first to the following every time:
 
 | Text |           
 | PostId |
+
 4. Send
 
 ### Post a Reply
@@ -79,6 +81,7 @@ Before each endpoint listed below you must first to the following every time:
 3. Enter values for the below keys:
 
  | PostId |
+ 
 4. Send
 
 ## [[[GET]]]
@@ -112,6 +115,7 @@ Before each endpoint listed below you must first to the following every time:
 
  | Title |
  | Text |
+ 
 4. Send
 
 ### Update a Comment
@@ -121,6 +125,7 @@ Before each endpoint listed below you must first to the following every time:
 3. Enter values for the below keys: 
 
  | Text |
+ 
 4. Send
 
 ### Update a Reply
@@ -130,6 +135,7 @@ Before each endpoint listed below you must first to the following every time:
 3. Enter values for the below keys: 
 
  | Text |
+ 
 4. Send
 
 ## [[[Delete]]]
