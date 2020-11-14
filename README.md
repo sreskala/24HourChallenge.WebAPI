@@ -7,9 +7,9 @@
 1. Make a post and direct it to https://localhost:{YourLocalHost}/api/Account/Register
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-  Email             
-  Password 
-  Confirm Password
+Email             
+Password 
+Confirm Password
 4. Send
 
 ---------------------
