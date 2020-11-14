@@ -7,9 +7,12 @@
 1. Make a post and direct it to https://localhost:{YourLocalHost}/api/Account/Register
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-Email             
-Password 
-Confirm Password
+Input into body header
+| Key |
+| :---------------: |
+| Email |
+| Password |
+| Confirm Password |
 4. Send
 
 ---------------------
@@ -36,38 +39,39 @@ Input into body header
 Before each endpoint listed below you must first to the following every time:
 
 1.After creating each, navagate to Headers and add the below (Key | Value) to the end of the list:
-Authorization    |   Bearer {YourToken}
+| Key | Value|
+| Authorization    |   Bearer {YourToken} |
 
 ## [[[POST]]]
 ### Post a Post
 1. Make a Post and driect it to https://localhost:{YourLocalHost}/api/Post
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-  Title             
-  Text
+| Title |            
+| Text |
 4. Send
 
 ### Post a Comment
 1. Make a Post and driect it to https://localhost:{YourLocalHost}/api/Comment
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-  Text             
-  PostId
+| Text |           
+| PostId |
 4. Send
 
 ### Post a Reply
 1. Make a Post and driect it to https://localhost:{YourLocalHost}/api/Reply
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-  Text             
-  CommentId
+ | Text |
+ | CommentId |
 4. Send
 
 ### Post a Like
 1. Make a Post and driect it to https://localhost:{YourLocalHost}/api/Like
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-  PostId
+ | PostId |
 4. Send
 
 ## [[[GET]]]
@@ -98,8 +102,8 @@ Authorization    |   Bearer {YourToken}
 2. Make a Put and driect it to https://localhost:{YourLocalHost}/api/Post/{id}
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:
-  Title             
-  Text
+ | Title |
+ | Text |
 4. Send
 
 ### Update a Comment
@@ -107,7 +111,7 @@ Authorization    |   Bearer {YourToken}
 2. Make a Put and driect it to https://localhost:{YourLocalHost}/api/Comment/{id}
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:           
-  Text
+ | Text |
 4. Send
 
 ### Update a Reply
@@ -115,7 +119,7 @@ Authorization    |   Bearer {YourToken}
 2. Make a Put and driect it to https://localhost:{YourLocalHost}/api/Reply/{id}
 2. Navagate to Body > x.www-form-urlencoded
 3. Enter values for the below keys:           
-  Text
+ | Text |
 4. Send
 
 ## [[[Delete]]]
